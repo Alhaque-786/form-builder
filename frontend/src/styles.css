@@ -1,0 +1,43 @@
+/* Basic styles for the form builder UI */
+
+.app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .sidebar {
+    width: 200px;
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin-right: 20px;
+  }
+  
+  .form-canvas {
+    flex: 1;
+    background-color: #e0e0e0;
+    padding: 20px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .draggable-item, .form-element {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .form-element input, .form-element textarea {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  
+  button {
+    margin-top: 20px;
+  }
+  
