@@ -1,19 +1,26 @@
-// app.js
 const express = require('express');
-const dotenv = require('dotenv');
-const connectDB = require('./config/db');
-const formRoutes = require('./routes/formRoutes');
-const errorHandler = require('./middleware/errorHandler');
-
-dotenv.config();
-connectDB();
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const connectDB = require('../config/db');
+const formRoutes = require('../routes/forms');
+const submissionRoutes = require('../routes/submissions');
+require('dotenv').config(); // Load environment variables from .env
 
 const app = express();
-app.use(express.json());
+const port = process.env.PORT || 5006;
 
-app.use('/api', formRoutes);
+// Middleware
+app.use(cors());
+app.use(bodyParser.json());
 
-app.use(errorHandler);
+// Routes
+app.use('/api/forms', formRoutes);
+app.use('/api/forms', submissionRoutes);
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// Connect to MongoDB
+connectDB();
+
+// Start the server
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
